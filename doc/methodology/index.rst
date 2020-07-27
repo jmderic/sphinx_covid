@@ -4,13 +4,13 @@ Methodology
 Data Source
 ^^^^^^^^^^^
 
-The data is sourced from the John's Hopkins github repository,::
+The data is sourced from the John's Hopkins github repository, ::
 
     git@github.com:CSSEGISandData/COVID-19.git
 
 from the time series file
-`csse_covid_19_data/csse_covid_19_time_series`.  This file contains
-data, by county, in csv format with a column for each data since the
+``csse_covid_19_data/csse_covid_19_time_series``.  This file contains
+data, by county, in csv format with a column for each date since the
 beginning of the epidemic.
 
 Data Limitations

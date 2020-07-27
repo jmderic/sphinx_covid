@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Covid Analysis & Graphs'
+project = 'Covid Analytics'
 copyright = '2020, J. Mark Deric'
 author = 'J. Mark Deric'
 
@@ -40,6 +40,10 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['Thumbs.db', '.DS_Store']
+
+# JMD General configuration additions
+# https://stackoverflow.com/questions/43760158/disable-syntax-highlight-in-sphinx-alabaster-theme
+highlight_language = 'none'
 
 
 # -- Options for HTML output -------------------------------------------------
