@@ -8,18 +8,17 @@ Graphs & Analysis
 
 This presentation shows time series graphs of confirmed cases and
 deaths from the Wuhan Coronavirus, a.k.a., Covid-19.  It also includes
-information extimated from that core data, Recovered and Active cases.
+information estimated from that core data, Recovered and Active cases.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    graphs/index
    methodology/index
 
-
+	      
 Reference
-=========
+^^^^^^^^^
 
 * :ref:`genindex`
 * :ref:`search`

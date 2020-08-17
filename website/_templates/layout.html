@@ -1,0 +1,15 @@
+
+{# add unfurl a.k.a., review items in the head #}
+{% extends "alabaster/layout.html" %}
+{% block extrahead %}
+{{ super() }}
+    <meta property="og:url"
+	  content="http://www.dericnet.com{{ html_path_prefix }}/"/>
+    <meta property="og:site_name" content="DericNet"/>
+    <meta property="og:title" content="Covid Analytics"/>
+    <meta property="og:description" 
+	  content="Time series graphs for selected jurisdictions"/>
+
+    <meta property="og:image"
+	  content="http://www.dericnet.com{{ html_path_prefix }}/plot_Cases.png"/>
+{% endblock %}
