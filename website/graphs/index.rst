@@ -1,13 +1,14 @@
-Graphs
-======
+Graphs & Tables
+===============
 
-These are the graphs of key locations in the US.
+These are the graphs of selected locations in the US.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. jinja:: file_base
+   :debug:
 
-   BexarCounty
-   HarrisCounty
-   NewYorkCity
-   OrangeCounty
+   .. toctree::
+      :maxdepth: 2
+      :caption: Contents:
+   {% for loc in locations %}
+      ../graphs_autoX/{{ loc -}}
+   {% endfor %}

@@ -12,9 +12,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+#sys.path.insert(0, os.path.abspath('.'))
+sys.path.append(os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -33,6 +34,7 @@ release = '0.0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'jinja'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -47,12 +49,29 @@ exclude_patterns = ['Thumbs.db', '.DS_Store']
 # https://stackoverflow.com/questions/43760158/disable-syntax-highlight-in-sphinx-alabaster-theme
 highlight_language = 'none'
 
+# -- Update Automation Support -----------------------------------------------
+
+import json
+
+def get_jinja_contexts():
+    with open('../jinja_contexts_autoX.json') as f:
+        jinja_contexts = json.load(f)
+    return jinja_contexts
+
+def get_html_context():
+    with open('../html_context_autoX.json') as f:
+        html_context = json.load(f)
+    return html_context
+
+# test jinja directive
+jinja_contexts = get_jinja_contexts()
+
+# eliminate template "isn't included in any toctree" warning
+exclude_patterns = ['graphs/template.rst']
 
 # -- Options for HTML output -------------------------------------------------
 
-html_context = {
-    'html_path_prefix' : '/covid7',
-}
+html_context = get_html_context()
 
 html_extra_path = [
     'images/plot_Cases.png',
@@ -73,4 +92,15 @@ html_theme_options = {
 #    'page_width': '1250px', # using default 940px
     'sidebar_includehidden': False,
     'fixed_sidebar' : True,
+}
+
+html_sidebars = {
+    '**': [
+        'about.html',
+        'asof.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
 }

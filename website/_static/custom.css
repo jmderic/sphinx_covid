@@ -5,3 +5,9 @@ pre {
 code {
     font-size : 0.78em;
 }
+
+th {
+    text-align: center;
+    padding-right: 3px;
+    padding-left: 3px;
+}
