@@ -67,7 +67,7 @@ def get_html_context():
 jinja_contexts = get_jinja_contexts()
 
 # eliminate template "isn't included in any toctree" warning
-exclude_patterns = ['graphs/template.rst']
+exclude_patterns = ['locs/template.rst']
 
 # -- Options for HTML output -------------------------------------------------
 

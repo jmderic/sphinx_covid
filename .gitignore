@@ -7,6 +7,6 @@
 *_devX*
 *.log
 
-# hide the automated setup from git; the setup brings in external
-# files which we do not want committed
+# hide files and directories created by auto_update.py; these are
+# created at runtime and are not to be committed to git
 *_autoX*

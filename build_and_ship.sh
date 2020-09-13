@@ -7,7 +7,10 @@ BASE_NAME=${BASE_NAME#/}
 SSH_HOST=webserv@192.168.13.11
 TARBALL_DEST=/var/www/vhosts/www.dericnet.com
 
-cd $SCRIPT_DIR/website
+cd $SCRIPT_DIR
+find . -name ".git" -prune -o -type f -name "*~" -exec rm -f {} \;
+
+cd website
 which pipenv
 VENV_DIR=$(pipenv --venv)
 

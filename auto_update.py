@@ -40,10 +40,10 @@ def create_html_context_file(top, state):
         json.dump(html_context, f, sort_keys=True, indent=4)
 
 def create_jinja_contexts_file(top, data_dir, state):
-    # setup location toctree, associated .rst files, and graph images
-    graphs_auto = top / 'website/graphs_autoX'
-    make_new_dir(graphs_auto)
-    graphs_template = top / 'website/graphs/template.rst'
+    # setup location toctree, associated .rst files, and plot images
+    locs_auto = top / 'website/locs_autoX'
+    make_new_dir(locs_auto)
+    locs_template = top / 'website/locs/template.rst'
     jinja_json = top / 'jinja_contexts_autoX.json'
     jinja_contexts = { 'file_base' : { 'locations' : [] } }
     fb_locs = jinja_contexts['file_base']['locations']
@@ -53,9 +53,9 @@ def create_jinja_contexts_file(top, data_dir, state):
         LT = locs[loc]
         LD = LT['data']
         fb_locs.append(loc)
-        graphs_product = graphs_auto / f'{loc}.rst'
-        copy(graphs_template, graphs_product)
-        with FileInput(graphs_product, inplace=True) as f:
+        locs_product = locs_auto / f'{loc}.rst'
+        copy(locs_template, locs_product)
+        with FileInput(locs_product, inplace=True) as f:
             for line in f:
                 print(line.replace('<loc>', loc), end='')
         day_heading = f'Latest Daily data: {state["asof_date"]}'
