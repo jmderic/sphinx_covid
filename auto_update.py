@@ -12,15 +12,16 @@ def make_new_dir(d):
         rmtree(d)
     d.mkdir(mode=0o755)
 
-def fmt_num(val, width, pop=None):
-    f = '{{:^{},.{}f}}'
-    fmt = f.format(width, 0)
+def fmt_num(val, width, pop=None, int_only=False):
     if pop:
         val = val / pop * 1e5
-        fmt1 = f.format('', 0)
-        str_len = len(fmt1.format(val))
-        if str_len < 3:
-            fmt = f.format(width, 3 - str_len)
+    f = '{{:^{},.{}f}}'
+    fmt1 = f.format('', 0)
+    str_len = len(fmt1.format(val))
+    if str_len < 3 and not int_only:
+        fmt = f.format(width, 3 - str_len)
+    else:
+        fmt = f.format(width, 0)
         
     return fmt.format(val)
 
@@ -70,9 +71,9 @@ def create_jinja_contexts_file(top, data_dir, state):
             },
             'day_hdr' : fmt_str(day_heading, 33),
             'case' : {
-                'tot' : fmt_num(LD['case_tot'], 9),
+                'tot' : fmt_num(LD['case_tot'], 9, None, True),
                 'tot_p100' : fmt_num(LD['case_tot'], 9, LT['Pop_num']),
-                'day' : fmt_num(LD['case_now'], 9),
+                'day' : fmt_num(LD['case_now'], 9, None, True),
                 'day_p100' : fmt_num(LD['case_now'], 9, LT['Pop_num']),
                 'abk' : fmt_num(LD['case_abk_now'], 11),
                 'abk_p100' : fmt_num(LD['case_abk_now'], 11, LT['Pop_num']),
@@ -80,7 +81,7 @@ def create_jinja_contexts_file(top, data_dir, state):
                 'ema_p100' : fmt_num(LD['case_ema_now'], 11, LT['Pop_num']),
             },
             'case_pk' : {
-                'day' : fmt_num(LD['case_peak']['val'], 10),
+                'day' : fmt_num(LD['case_peak']['val'], 10, None, True),
                 'day_p100' : fmt_num(LD['case_peak']['val'], 10, LT['Pop_num']),
                 'day_date' : fmt_str(LD['case_peak']['date'], 10),
                 'abk' : fmt_num(LD['case_abk_peak']['val'], 11),
@@ -91,9 +92,9 @@ def create_jinja_contexts_file(top, data_dir, state):
                 'ema_date' : fmt_str(LD['case_ema_peak']['date'], 11),
             },
             'death' : {
-                'tot' : fmt_num(LD['death_tot'], 9),
+                'tot' : fmt_num(LD['death_tot'], 9, None, True),
                 'tot_p100' : fmt_num(LD['death_tot'], 9, LT['Pop_num']),
-                'day' : fmt_num(LD['death_now'], 9),
+                'day' : fmt_num(LD['death_now'], 9, None, True),
                 'day_p100' : fmt_num(LD['death_now'], 9, LT['Pop_num']),
                 'abk' : fmt_num(LD['death_abk_now'], 11),
                 'abk_p100' : fmt_num(LD['death_abk_now'], 11, LT['Pop_num']),
@@ -101,7 +102,7 @@ def create_jinja_contexts_file(top, data_dir, state):
                 'ema_p100' : fmt_num(LD['death_ema_now'], 11, LT['Pop_num']),
             },
             'death_pk' : {
-                'day' : fmt_num(LD['death_peak']['val'], 10),
+                'day' : fmt_num(LD['death_peak']['val'], 10, None, True),
                 'day_p100' : fmt_num(LD['death_peak']['val'], 10, LT['Pop_num']),
                 'day_date' : fmt_str(LD['death_peak']['date'], 10),
                 'abk' : fmt_num(LD['death_abk_peak']['val'], 11),
@@ -112,12 +113,12 @@ def create_jinja_contexts_file(top, data_dir, state):
                 'ema_date' : fmt_str(LD['death_ema_peak']['date'], 11),
             },
             'active' : {
-                'day' : fmt_num(LD['active_now'], 10),
+                'day' : fmt_num(LD['active_now'], 10, None, True),
                 'day_p100' : fmt_num(LD['active_now'], 10, LT['Pop_num']),
                 'day_date' : fmt_str(state['asof_long'], 10),
             },
             'active_pk' : {
-                'day' : fmt_num(LD['active_peak']['val'], 10),
+                'day' : fmt_num(LD['active_peak']['val'], 10, None, True),
                 'day_p100' : fmt_num(LD['active_peak']['val'], 10, LT['Pop_num']),
                 'day_date' : fmt_str(LD['active_peak']['date'], 10),
             },
