@@ -99,8 +99,9 @@ html_sidebars = {
         'about.html',
         'asof.html',
         'navigation.html',
-        'relations.html',
+        #'relations.html',
         'searchbox.html',
-        'donate.html',
+        #'donate.html',
+        'twitter_follow.html',
     ]
 }
