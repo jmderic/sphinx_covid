@@ -17,7 +17,7 @@ Using Averaging and Smoothing
 Esimating Recovered/Active Cases
 """"""""""""""""""""""""""""""""
 
-The current site update uses 14 day delay between testing case
+The current site update uses a 28 day delay between testing case
 confirmed to final diposition, death or recovered.  The program on
 github allows this assumption to be changed and the plots to be
 updated accordingly.
