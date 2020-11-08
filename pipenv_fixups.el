@@ -6,4 +6,5 @@
 ;;; e.g.,
 (add-to-list 'exec-path "/home/mark/.local/share/virtualenvs/sphinx_covid-Ri6Ep0nH/bin")
 
+;; -*- indent-tabs-mode: nil -*-
 (setq electric-indent-mode nil)

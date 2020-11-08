@@ -28,8 +28,8 @@ data, Recovered and Active cases.
 .. toctree::
    :maxdepth: 2
 
-   locs/index
    methodology/index
+   locs/index
 
 	      
 Reference
